@@ -25,13 +25,13 @@ public class Main {
         File saveFile = new File(pathFile);
         try {
             if (!saveFile.createNewFile()) {
-                System.out.println("Игра не сохранена, потому что не создан файл");
+                System.out.println("A game is not saved because of a file is not created");
                 return false;
             } else {
                 try (FileOutputStream fos = new FileOutputStream(saveFile.getAbsolutePath());
                      ObjectOutputStream oos = new ObjectOutputStream(fos)) {
                     oos.writeObject(save);
-                    System.out.println("Игра сохранена в " + pathFile);
+                    System.out.println("A game is saved in the " + pathFile);
                 } catch (IOException ex1) {
                     System.out.println(ex1.getMessage());
                 }
@@ -62,18 +62,18 @@ public class Main {
         File file = new File(pathArchive);
         if (file.exists()) {
             StringBuilder string = new StringBuilder();
-            string.append("Архив создан по адресу: ")
+            string.append("Zip file is created in ")
                     .append(pathArchive)
                     .append("\n");
             for (String filePath : filePaths) {
                 File save = new File(filePath);
-                if (save.delete()) string.append("Файл ")
+                if (save.delete()) string.append("A file ")
                         .append(filePath)
-                        .append(" удален\n");
+                        .append(" is deleted\n");
             }
             filePaths.clear();
             System.out.println(string);
-        } else System.out.println("Архив не создан");
+        } else System.out.println("Zip file is not created");
     }
 
 }
